@@ -1,79 +1,5 @@
 ```
-[Captains-Bay]🚩 >  aansible-playbook -i my-cluster.inventory cluster-setup.yaml
-
-PLAY [Prepare Nodes] **************************************************************************************************************************
-
-TASK [Gathering Facts] ************************************************************************************************************************
-ok: [md-kubernetes-master-2]
-ok: [md-kubernetes-master-1]
-ok: [md-kubernetes-master-3]
-ok: [md-kubernetes-minion-4]
-
-TASK [prepare-nodes : Make sure some needed software is installed via package manager] ********************************************************
-ok: [md-kubernetes-master-2] => (item=perl)
-ok: [md-kubernetes-minion-4] => (item=perl)
-ok: [md-kubernetes-master-3] => (item=perl)
-ok: [md-kubernetes-master-1] => (item=perl)
-ok: [md-kubernetes-master-2] => (item=kubelet)
-ok: [md-kubernetes-minion-4] => (item=kubelet)
-ok: [md-kubernetes-master-3] => (item=kubelet)
-ok: [md-kubernetes-master-1] => (item=kubelet)
-ok: [md-kubernetes-master-2] => (item=kubectl)
-ok: [md-kubernetes-master-3] => (item=kubectl)
-ok: [md-kubernetes-minion-4] => (item=kubectl)
-ok: [md-kubernetes-master-1] => (item=kubectl)
-ok: [md-kubernetes-master-2] => (item=kubeadm)
-ok: [md-kubernetes-master-3] => (item=kubeadm)
-ok: [md-kubernetes-minion-4] => (item=kubeadm)
-failed: [md-kubernetes-master-2] (item=kubernetes-cni }}) => {"ansible_loop_var": "item", "changed": false, "item": "kubernetes-cni }}", "msg": "No package matching 'kubernetes-cni }}' is available"}
-ok: [md-kubernetes-master-1] => (item=kubeadm)
-failed: [md-kubernetes-master-3] (item=kubernetes-cni }}) => {"ansible_loop_var": "item", "changed": false, "item": "kubernetes-cni }}", "msg": "No package matching 'kubernetes-cni }}' is available"}
-failed: [md-kubernetes-minion-4] (item=kubernetes-cni }}) => {"ansible_loop_var": "item", "changed": false, "item": "kubernetes-cni }}", "msg": "No package matching 'kubernetes-cni }}' is available"}
-failed: [md-kubernetes-master-1] (item=kubernetes-cni }}) => {"ansible_loop_var": "item", "changed": false, "item": "kubernetes-cni }}", "msg": "No package matching 'kubernetes-cni }}' is available"}
-
-NO MORE HOSTS LEFT ****************************************************************************************************************************
-#
-
-PLAY RECAP ************************************************************************************************************************************
-md-kubernetes-master-1     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
-md-kubernetes-master-2     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
-md-kubernetes-master-3     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
-md-kubernetes-minion-4     : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
-
-[Captains-Bay]🚩 >  ls
-TODO				cluster-upgrade.yaml		images.lst			templates
-cluster-dashboard.yaml		efk-stack.yaml			local-access.yaml		uninstall-dashboard.yaml
-cluster-images.yaml		etcd-operator.yaml		my-cluster.inventory		uninstall-efk-stack.yaml
-cluster-setup.yaml		files				prometheus-operator.yaml	xxx.yaml
-cluster-uninstall.yaml		group_vars			roles
-[Captains-Bay]🚩 >  cd files/
-[Captains-Bay]🚩 >  ls
-clone-from-github.sh
-[Captains-Bay]🚩 >  cd ..
-[Captains-Bay]🚩 >  ls
-TODO				cluster-upgrade.yaml		images.lst			templates
-cluster-dashboard.yaml		efk-stack.yaml			local-access.yaml		uninstall-dashboard.yaml
-cluster-images.yaml		etcd-operator.yaml		my-cluster.inventory		uninstall-efk-stack.yaml
-cluster-setup.yaml		files				prometheus-operator.yaml	xxx.yaml
-cluster-uninstall.yaml		group_vars			roles
-[Captains-Bay]🚩 >  cd roles/
-[Captains-Bay]🚩 >  ls
-admin-account		fluentd			keepalived		minions			prometheus-operator
-dashboard		ha-settings		kibana			network-plugin		secondary-masters
-elasticsearch		haproxy			kube-vip		nginx			uninstall
-etcd-operator		install-images		label-minions		prepare-nodes		upgrade-masters
-external-etcd		join-token		local-access		primary-master		upgrade-minions
-[Captains-Bay]🚩 >  vi prepare-nodes/tasks/main.yaml
-[Captains-Bay]🚩 >  ls
-admin-account		fluentd			keepalived		minions			prometheus-operator
-dashboard		ha-settings		kibana			network-plugin		secondary-masters
-elasticsearch		haproxy			kube-vip		nginx			uninstall
-etcd-operator		install-images		label-minions		prepare-nodes		upgrade-masters
-external-etcd		join-token		local-access		primary-master		upgrade-minions
-[Captains-Bay]🚩 >  pwd
-/Users/ajeetraina/kubeadm2ha/ansible/roles
-[Captains-Bay]🚩 >  cd ..
-[Captains-Bay]🚩 >  vansible-playbook -i my-cluster.inventory cluster-setup.yaml
+ansible-playbook -i my-cluster.inventory cluster-setup.yaml
 
 PLAY [Prepare Nodes] **************************************************************************************************************************
 
@@ -382,5 +308,4 @@ md-kubernetes-master-2     : ok=17   changed=7    unreachable=0    failed=0    s
 md-kubernetes-master-3     : ok=17   changed=7    unreachable=0    failed=0    skipped=30   rescued=0    ignored=0
 md-kubernetes-minion-4     : ok=3    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 
-[Captains-Bay]🚩 >
 ```
