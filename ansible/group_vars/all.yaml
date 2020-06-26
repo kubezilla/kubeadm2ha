@@ -54,8 +54,8 @@ CERT_STATE: "Hamburg"
 CERT_ORG_UNIT: "Deployment"
 
 # Software versions (used by installation via package manager)
-KUBERNETES_VERSION: "1.17.3"
-KUBERNETES_CNI_VERSION: "0.7.5"
+KUBERNETES_VERSION: ""
+KUBERNETES_CNI_VERSION: ""
 
 # Tags for some images
 KUBE_VIP_TAG: "0.1.1"
